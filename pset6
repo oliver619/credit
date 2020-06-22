@@ -1,0 +1,47 @@
+from cs50 import get_float
+from cs50 import get_string
+
+
+def check_algo(n):
+    even = 0
+    uneven = 0
+    while n != 0:
+        num = n % 10
+        even += num
+        n /= 10
+        nums = ((n % 10) * 2)
+        result = (nums % 10) + (nums / 10)
+        uneven += result
+        n /= 10
+    
+    summ = uneven + even
+    if summ % 10 == 0:
+        return True
+    else:
+        return False
+
+def main():
+    n = input("enter your credit card number: ")
+    if n >= 340000000000000 and n < 349999999999999:
+        length = 1
+    elif n >= 370000000000000 and n < 379999999999999:
+        length = 1
+    elif n >= 5100000000000000 and n < 5599999999999999:
+        length = 2
+    elif n >= 4000000000000 and n < 4999999999999:
+        length = 3
+    elif n >= 4000000000000000 and n < 4999999999999999:
+        length = 3
+        
+
+    while check_algo(n):
+        if length == 1:
+            print("AMEX")
+        elif length == 2:
+            print("MASTERCARD")
+        elif length == 3:
+            print("VISA")
+        else:
+            print("INVALID")
+
+main()
